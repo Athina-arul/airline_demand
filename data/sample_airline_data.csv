@@ -1,1 +1,7 @@
+Date,Route,Destination,Price
+2025-07-01,NYC-LAX,Los Angeles,350
+2025-07-02,NYC-SFO,San Francisco,400
+2025-07-02,NYC-LAX,Los Angeles,375
+2025-07-03,SFO-LAX,Los Angeles,200
+2025-07-03,NYC-SEA,Seattle,450
 
