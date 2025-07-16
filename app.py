@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 app = Flask(__name__)
 
 def fetch_airline_data():
-    # Example using CSV as placeholder
     df = pd.read_csv('data/sample_airline_data.csv')
     return df
 
@@ -27,4 +26,5 @@ def dashboard():
                            demand=demand)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
+
