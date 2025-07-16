@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airline Market Demand Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Airline Market Demand Dashboard</h1>
+
+    <h2>Popular Routes</h2>
+    <canvas id="routesChart"></canvas>
+
+    <h2>Price Trend Over Time</h2>
+    <canvas id="priceChart"></canvas>
+
+    <h2>Demand by Location</h2>
+    <canvas id="demandChart"></canvas>
+
+<script>
+    const routes = {{ routes|tojson }};
+    const demand = {{ demand|tojson }};
+    const price_dates = {{ price_dates|tojson }};
+    const price_values = {{ price_values|tojson }};
+
+    const ctx1 = document.getElementById('routesChart').getContext('2d');
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(routes),
+            datasets: [{
+                label: 'Number of Bookings',
+                data: Object.values(routes),
+                backgroundColor: 'lightblue'
+            }]
+        }
+    });
+
+    const ctx2 = document.getElementById('priceChart').getContext('2d');
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: price_dates,
+            datasets: [{
+                label: 'Average Price',
+                data: price_values,
+                borderColor: 'green',
+                fill: false
+            }]
+        }
+    });
+
+    const ctx3 = document.getElementById('demandChart').getContext('2d');
+    new Chart(ctx3, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(demand),
+            datasets: [{
+                label: 'Demand Share',
+                data: Object.values(demand),
+                backgroundColor: ['red', 'blue', 'yellow', 'green', 'orange']
+            }]
+        }
+    });
+</script>
+</body>
+</html>
